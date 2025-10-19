@@ -1,19 +1,45 @@
 '''
-Testing: 100%|██████████| 79/79 [00:24<00:00,  3.21it/s]
+Using device: cuda
+100%|██████████| 170M/170M [00:14<00:00, 12.0MB/s]
+Epoch 1/10:   0%|          | 0/391 [00:00<?, ?it/s]Starting Training...
+Epoch 1/10: 100%|██████████| 391/391 [00:15<00:00, 24.98it/s, Loss=1.553, Acc=42.92%]
+Epoch 1 completed in 15.65s, Loss: 1.553, Accuracy: 42.92%
+Epoch 2/10: 100%|██████████| 391/391 [00:15<00:00, 25.55it/s, Loss=1.068, Acc=62.23%]
+Epoch 2 completed in 15.30s, Loss: 1.068, Accuracy: 62.23%
+Epoch 3/10: 100%|██████████| 391/391 [00:14<00:00, 26.49it/s, Loss=0.870, Acc=69.61%]
+Epoch 3 completed in 14.76s, Loss: 0.870, Accuracy: 69.61%
+Epoch 4/10: 100%|██████████| 391/391 [00:14<00:00, 26.24it/s, Loss=0.766, Acc=73.38%]
+Epoch 4 completed in 14.90s, Loss: 0.766, Accuracy: 73.38%
+Epoch 5/10: 100%|██████████| 391/391 [00:15<00:00, 25.31it/s, Loss=0.700, Acc=76.02%]
+Epoch 5 completed in 15.45s, Loss: 0.700, Accuracy: 76.02%
+Epoch 6/10: 100%|██████████| 391/391 [00:14<00:00, 26.37it/s, Loss=0.652, Acc=77.65%]
+Epoch 6 completed in 14.83s, Loss: 0.652, Accuracy: 77.65%
+Epoch 7/10: 100%|██████████| 391/391 [00:14<00:00, 26.36it/s, Loss=0.630, Acc=78.32%]
+Epoch 7 completed in 14.84s, Loss: 0.630, Accuracy: 78.32%
+Epoch 8/10: 100%|██████████| 391/391 [00:14<00:00, 26.46it/s, Loss=0.599, Acc=79.44%]
+Epoch 8 completed in 14.77s, Loss: 0.599, Accuracy: 79.44%
+Epoch 9/10: 100%|██████████| 391/391 [00:14<00:00, 26.61it/s, Loss=0.577, Acc=80.53%]
+Epoch 9 completed in 14.69s, Loss: 0.577, Accuracy: 80.53%
+Epoch 10/10: 100%|██████████| 391/391 [00:14<00:00, 26.62it/s, Loss=0.571, Acc=80.58%]
+Epoch 10 completed in 14.69s, Loss: 0.571, Accuracy: 80.58%
+Finished Training
+Model saved to ./cifar_improved_net.pth
+Starting Testing...
+Testing: 100%|██████████| 79/79 [00:01<00:00, 43.48it/s]
 
-Overall Accuracy: 71.24%
+Overall Accuracy: 72.76%
 
 Per-class Accuracy:
-plane     : 85.30% (853/1000)
-car       : 94.20% (942/1000)
-bird      : 47.30% (473/1000)
-cat       : 48.20% (482/1000)
-deer      : 58.10% (581/1000)
-dog       : 46.10% (461/1000)
-frog      : 89.40% (894/1000)
-horse     : 70.30% (703/1000)
-ship      : 85.90% (859/1000)
-truck     : 87.60% (876/1000)
+plane     : 73.40% (734/1000)
+car       : 96.10% (961/1000)
+bird      : 77.30% (773/1000)
+cat       : 25.70% (257/1000)
+deer      : 53.80% (538/1000)
+dog       : 86.20% (862/1000)
+frog      : 84.00% (840/1000)
+horse     : 74.00% (740/1000)
+ship      : 81.60% (816/1000)
+truck     : 75.50% (755/1000)
 '''
 
 
@@ -50,7 +76,7 @@ test_transform = transforms.Compose([
 # 超参数设置
 batch_size = 128
 learning_rate = 0.1
-epochs = 5
+epochs = 10
 momentum = 0.9
 weight_decay = 5e-4
 
@@ -117,14 +143,14 @@ if __name__ == '__main__':
     trainset = torchvision.datasets.CIFAR10(
         root='./data',
         train=True,
-        download=True,
+        download=False,
         transform=train_transform
     )
 
     testset = torchvision.datasets.CIFAR10(
         root='./data',
         train=False,
-        download=True,
+        download=False,
         transform=test_transform
     )
 
